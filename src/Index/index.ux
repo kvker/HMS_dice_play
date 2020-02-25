@@ -1,0 +1,70 @@
+<template>
+  <div>
+    <web src="{{loadUrl}}" trustedurl="{{list}}" onpagestart="onPageStart" onmessage="onMessage" ontitlereceive="onTitleReceive"
+      onerror="onError" id="web" allowthirdpartycookies="{{allowThirdPartyCookies}}">
+    </web>
+  </div>
+</template>
+<style>
+  .doc-page {
+    flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+  }
+  .web-page {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<script>
+  import router from "@system.router";
+  
+  export default {
+    props: ['websrc'],
+    data: {
+      title: "",
+      // TODO Replace the link to the H5 app
+      loadUrl: "https://mobile-1251835910.cos-website.ap-chengdu.myqcloud.com/dice_play/",
+      // Attribute allowthirdpartycookies, indicates whether cookies can be delivered in cross-domain mode.
+      // If you need login Google Account or Other Account, Please set TRUE.
+      allowThirdPartyCookies: true,
+      // Here the whitelist settings, when the loading page has multiple addresses, such as the successful loading of the login address and the inconsistent entry address, it needs to set the whitelist to do so.
+      list: ["new RegExp('https?.*')"]
+    },
+    onPageStart(e) {
+      console.info('pagestart: ' + e.url)
+    },
+    onTitleReceive(e) {
+      this.title = e.title;
+    },
+    onError(e) {
+      console.info('pageError : ' + e.errorMsg)
+    },
+    onMessage(e) {
+      console.info('onmessage e = ' + e.message + ", url = " + e.url);
+    },
+    onShow: function () {
+      console.info(" onshow");
+    },
+    onHide: function () {
+      console.info("  onHide");
+    },
+    onBackPress() {
+      console.log('onBackPress')
+      this.$element('web').canBack({
+        callback: function (e) {
+          if (e) {
+            console.log('web back')
+            this.$element('web').back()
+          } else {
+            console.log('router back')
+            router.back()
+          }
+        }.bind(this)
+      })
+      return true
+    },
+  }
+</script>

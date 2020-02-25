@@ -1,0 +1,36 @@
+{
+  "package": "dice.hms.kvker",
+  "name": "摇骰子辅助工具",
+  "versionName": "1.0.0",
+  "versionCode": 1,
+  "icon": "/Common/dice-play.jpeg",
+  "minPlatformVersion": 1040,
+  "features": [
+    {
+      "name": "system.configuration"
+    }
+  ],
+  "permissions": [
+    {
+      "origin": "*"
+    }
+  ],
+  "config": {},
+  "router": {
+    "entry": "Index",
+    "pages": {
+      "Index": {
+        "component": "index"
+      }
+    }
+  },
+  "display": {
+    "pages": {
+      "Index": {
+        "titleBar": false,
+        "menu": false
+      }
+    }
+  },
+  "debugable": true
+}
