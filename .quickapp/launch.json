@@ -14,5 +14,7 @@
       "elementMode": false
     }
   ],
-  "currentWidgetUri": "Index"
+  "currentWidgetUri": "Index",
+  "lastWidgetUri": "null",
+  "signType": "debugSign"
 }

@@ -31,5 +31,6 @@
         "menu": false
       }
     }
-  }
+  },
+  "debugable": true
 }
